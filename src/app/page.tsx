@@ -2,16 +2,15 @@
 import axios from "axios";
 import { format, fromUnixTime, parseISO } from "date-fns";
 import { useQuery } from "react-query";
-import Navbar from './../components/NavBar';
-import WeatherDetails from './../components/WeatherDetails';
-import Container from './../components/Container';
+import Navbar from '@/components/Navbar';
+import WeatherDetails from '@/components/WeatherDetails';
+import Container from '@/components/Container';
 import { convertKelvinToCelcius } from "@/utils/convertKelvinToCelcius";
 import { WeatherIcon } from "@/components/WeatherIcon";
 import { getDayOrNightIcon } from "@/utils/getDayOrNightIcon";
-import { mtrToKm } from "@/utils/MtrToKm";
+import { mtrToKm } from "@/utils/mtrToKm";
 import { convertWindSpeed } from "@/utils/convertWindSpeed";
 import ForecastWeatherDetail from "@/components/ForecastWeatherDetail";
-import test from "@/components/test";
 import { loadingCityAtom, placeAtom } from "./atom";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
@@ -75,7 +74,7 @@ interface WeatherListItem {
 
 
 export default function Home() {
-  const [place,setPlace] = useAtom(placeAtom);
+  const [place,] = useAtom(placeAtom);
   const [loadingCity,] = useAtom(loadingCityAtom);
   const { isLoading, error, data ,refetch } = useQuery<WeatherData>({
     queryKey: ['repoData'],
@@ -124,8 +123,8 @@ export default function Home() {
         <section className="space-y-4">
         <div className="space-y-2">
         <h2 className="flex gap-1 text-2xl items-end">
-          <p>{format(parseISO(firstData?.dt_txt ?? ""),"EEEE")}</p>
-          <p className="text-lg">{format(parseISO(firstData?.dt_txt ?? ""),"(dd.MM.yyyy)")}</p>
+          <p>{format(parseISO(firstData?.dt_txt ?? "Tuesday"),"EEEE")}</p>
+          <p className="text-lg">{format(parseISO(firstData?.dt_txt ?? "10.05.2001"),"(dd.MM.yyyy)")}</p>
         </h2>
         <Container className="gap-10 px-6 items-center">
           <div className="flex flex-col px-4">
