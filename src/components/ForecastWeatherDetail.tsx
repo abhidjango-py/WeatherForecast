@@ -46,7 +46,7 @@ export default function ForecastWeatherDetail( props : ForecastWeatherDetailProp
               <span>{convertKelvinToCelcius(temp_min??0)}°↓{" "}</span>{" "}
               <span>{convertKelvinToCelcius(temp_max??0)}°↑</span>
             </p>
-                <p className='capitalize whitespace-nowrap w-[80px]'>{description}</p>
+                <p className='capitalize'>{description}</p>
             </div>
         </section>
         <section className='overflow-x-auto flex justify-between gap-4 px-4 w-full pr-10'>
